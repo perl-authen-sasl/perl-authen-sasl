@@ -202,7 +202,7 @@ sub server_start {
 
   $self->{need_step} = 1;
   $self->{error}     = undef;
-  $self->{nonce}     = $NONCE? md5_hex($NONCE) : unpack('H32',urandom(16));
+  $self->{nonce}     = $NONCE ? md5_hex($NONCE) : unpack('H32',urandom(16));
 
   $self->init_sec_layer;
 
@@ -261,7 +261,7 @@ sub client_step {   # $self, $server_sasl_credentials
 
   my %response = (
     nonce        => $sparams{'nonce'},
-    cnonce       => $CNONCE? md5_hex($CNONCE) : unpack('H32',urandom(16)),
+    cnonce       => $CNONCE ? md5_hex($CNONCE) : unpack('H32',urandom(16)),
     'digest-uri' => $self->service . '/' . $self->host,
     # calc how often the server nonce has been seen; server expects "00000001"
     nc           => sprintf("%08d",     ++$self->{nonce_counts}{$sparams{'nonce'}}),
