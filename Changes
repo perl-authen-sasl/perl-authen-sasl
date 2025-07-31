@@ -1,5 +1,11 @@
 
-2.1800  TO BE RELEASED
+2.1900  TO BE RELEASED
+  [Fixed]
+    - CVE-2025-40918 (Insecure source of randomness),
+      required addition of dependency on Crypt::URandom
+
+
+2.1800  2025-04-25
   [Changed]
     - Minimum required Perl version 5.14+ (from 5.6.0);
       Digest::HMAC_MD5 was 5.8.1, making 5.8.1 the effective minimum
