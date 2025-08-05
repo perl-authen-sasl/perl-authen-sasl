@@ -169,6 +169,8 @@ Peter Marschall <peter@adpm.de>
 
 Aditya Garg <gargaditya08@live.com>
 
+Robert Rothenberg
+
 Please report any bugs, or post any suggestions, to the perl-ldap mailing list
 <perl-ldap@perl.org>
 
