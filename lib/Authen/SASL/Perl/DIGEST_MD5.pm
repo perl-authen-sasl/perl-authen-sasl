@@ -14,6 +14,11 @@ use Crypt::URandom qw(urandom);
 use Digest::MD5 qw(md5_hex md5);
 use Digest::HMAC_MD5 qw(hmac_md5);
 
+warnings::warnif(
+    'deprecated',
+    'The DIGEST-MD5 SASL mechanism is deprecated by RFC6331 and should no longer be used'
+    );
+
 # TODO: complete qop support in server, should be configurable
 
 @ISA = qw(Authen::SASL::Perl);
@@ -747,7 +752,7 @@ __END__
 
 =head1 NAME
 
-Authen::SASL::Perl::DIGEST_MD5 - Digest MD5 Authentication class
+Authen::SASL::Perl::DIGEST_MD5 - (DEPRECATED) Digest MD5 Authentication class
 
 =head1 SYNOPSIS
 
@@ -766,6 +771,10 @@ Authen::SASL::Perl::DIGEST_MD5 - Digest MD5 Authentication class
 
 This method implements the client and server parts of the DIGEST-MD5 SASL
 algorithm, as described in RFC 2831.
+
+Please note that this mechanism has been moved to the "OBSOLETE" section of
+the L<mechanism registry|https://www.iana.org/assignments/sasl-mechanisms/sasl-mechanisms.xhtml>
+as per L<RFC6331|https://www.rfc-editor.org/rfc/rfc6331.html>.
 
 =head2 CALLBACK
 

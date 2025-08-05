@@ -7,6 +7,10 @@ package Authen::SASL::CRAM_MD5;
 use strict;
 use warnings;
 
+warnings::warnif(
+    'deprecated',
+    'The CRAM-MD5 SASL mechanism is effectively deprecated by RFC8314 and should no longer be used'
+    );
 
 sub new {
   shift;
