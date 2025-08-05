@@ -1,5 +1,5 @@
 
-2.1900  TO BE RELEASED
+2.1900  2025-08-05
   [Fixed]
     - CVE-2025-40918 (Insecure source of randomness),
       required addition of dependency on Crypt::URandom
@@ -10,6 +10,8 @@
       for the pointers to the documentation
     - Update module metadata to point to the new 'perl-authen-sasl' org
       on GitHub to which the modules moved
+    - Use VERSION declarations in 'package' statements, since our minimum
+      Perl version is 5.14 anyway
 
 
 2.1800  2025-04-25
