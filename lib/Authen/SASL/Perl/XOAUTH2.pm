@@ -7,6 +7,7 @@
 package Authen::SASL::Perl::XOAUTH2;
 
 use strict;
+use warnings;
 use vars qw(@ISA);
 use JSON::PP;
 
