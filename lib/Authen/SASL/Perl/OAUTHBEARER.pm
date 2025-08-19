@@ -7,6 +7,7 @@
 package Authen::SASL::Perl::OAUTHBEARER;
 
 use strict;
+use warnings;
 use vars qw(@ISA);
 use JSON::PP;
 
