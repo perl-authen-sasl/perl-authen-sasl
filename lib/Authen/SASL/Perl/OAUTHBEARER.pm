@@ -38,13 +38,24 @@ sub client_start {
     # * gs2-authzid `a=" {User} "`
     #
     # The second part are key value pairs containing host, port and auth as
-    # described in RFC7628.
+    # described in RFC7628. Host and port are optional and can be omitted.
     #
     # https://datatracker.ietf.org/doc/html/rfc5801
     # https://datatracker.ietf.org/doc/html/rfc7628
     my $username = $self->_call('user');
+    my $host     = $self->_call('host');
+    my $port     = $self->_call('port');
     my $token    = $self->_call('pass'); # OAuth 2.0 access token
-    my $auth_string = "n,a=$username,\001auth=Bearer $token\001\001";
+    my $auth_string;
+    if (defined $host && defined $port) {
+      $auth_string = "n,a=$username,\001host=$host\001port=$port\001auth=Bearer $token\001\001";
+    } elsif (defined $host) {
+      $auth_string = "n,a=$username,\001host=$host\001auth=Bearer $token\001\001";
+    } elsif (defined $port) {
+      $auth_string = "n,a=$username,\001port=$port\001auth=Bearer $token\001\001";
+    } else {
+      $auth_string = "n,a=$username,\001auth=Bearer $token\001\001";
+    }
 
     return $auth_string;
 }
@@ -75,6 +86,8 @@ Authen::SASL::Perl::OAUTHBEARER - OAUTHBEARER Authentication class
     mechanism => 'OAUTHBEARER',
     callback  => {
       user => $user,
+      host => $hostname, #optional
+      port => $port, #optional
       pass => $access_token
     },
   );
@@ -95,6 +108,14 @@ The callbacks used are:
 =item user
 
 The username to be used for authentication.
+
+=item host
+
+The hostname to which the client will connect to. It is optional and can be omitted.
+
+=item port
+
+The destination port that the client will connect to. It should be a decimal positive integer string without leading zeros. It is optional and can be omitted.
 
 =item pass
 
